@@ -1,0 +1,19 @@
+This webpage generates boards for a rousing game of Chat Roulette Bingo!
+
+What is Chat Roulette?
+
+Chat Roulette (http://chatroulette.com) is a website that pairs random strangers for video conversations. Participants click "Next" to end the current conversation and start another.
+
+What is Chat Roulette Bingo?
+
+A game we made up for a recent house party. Cards were distributed to guests at the party, and people marked a square for each item they hit as they surfed the site (e.g. tattoo, animal costume, cross-dressing, wang*). First to get 5 in a row is a bingo!
+
+To load the file, load the following HTML file in your browser:
+file://path/to/board.html
+
+To specify the number of boards you'd like to print out, use the "n" parameter:
+file://path/to/board.html?n=20
+
+For maximum hotness, be sure to download the provided font, "League Gothic."
+
+Enjoy!
