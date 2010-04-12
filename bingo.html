@@ -1,0 +1,160 @@
+<html>
+<head>
+  <script type="text/javascript" src="scripts/jquery-1.4.2.js"></script>
+  <script type="text/javascript">
+    var Board = (function() {
+      var SQUARES = [
+        [
+          "Alcohol",
+          "Athletic Paraphernalia",
+          "Bandana",
+          "Boobies",
+          "Bunny",
+          "Cat",
+          "Creepy Old Guy",
+          "Dancing",
+          "Desperation",
+          "Dog",
+          "Eating",
+          "Hamster",
+          "Handwritten Sign",
+          "Hipster",
+          "Instrument",
+          "Mask",
+          "Military",
+          "Piercing",
+          "Sandwich",
+          "Sports",
+          "Stuffed Animal",
+          "Tattoo",
+          "Toilet",
+          "Torso"
+        ],
+        [
+          "10+ people",
+          "30-second conversation",
+          "Air Guitar",
+          "Back-to-back Female Chatters",
+          "Chat Roulette Bingo Playing Crowd",
+          "Green Man",
+          "Blown Kiss",
+          "Midget",
+          "Excellent Mustache",
+          "Octogenarian",
+          "Robot",
+          "Thumbs Up",
+          "Twins",
+          "Your Doppelganger"
+        ],
+        [
+          "Blake Commagere",
+          "Guy Fawkes",
+          "Macarena",
+          "Piano Improv",
+          "Rick Astley",
+          "Swastika"
+        ]
+      ]
+      var SQUARE_WEIGHTINGS = [0, 0, 0, 0, 0, 0, 1, 1, 1, 2]
+      var BOARD_WIDTH = 5;
+      var BOARD_HEIGHT = 5;
+      var setup = function() {
+        for (var i = 0; i < BOARD_WIDTH; i++) {
+          for (var j = 0; j < BOARD_HEIGHT; j++) {
+            if (!isCenter(i, j)) {
+              var rarity =
+                SQUARE_WEIGHTINGS[randomInteger(SQUARE_WEIGHTINGS.length)];
+              var val = SQUARES[rarity][randomInteger(SQUARES[rarity].length)];
+              SQUARES[rarity] = removeAll(SQUARES[rarity], val);
+              if (val.length > 18) {
+                setFont(i, j, 18);
+              }
+              setSquare(i, j, val);
+            }
+          }
+        }
+      };
+      var removeAll = function(arr, val) {
+        return arr.filter(function(elem) {
+          return elem != val;
+        });
+      };
+      var setFont = function(i, j, fontSize) {
+        $("#board_squares tr:eq(" + i + ") td:eq(" + j + ")").
+          attr("style", "font-size: " + fontSize + "px");
+      }
+      var setSquare = function(i, j, val) {
+        var square =
+          $("#board_squares tr:eq(" + i + ") td:eq(" + j + ")");
+        square.html(val);
+      };
+      var randomInteger = function(n) {
+        return Math.floor(Math.random() * n);
+      };
+      var isCenter = function(i, j) {
+        return (i == Math.floor(BOARD_HEIGHT / 2)) &&
+               (j == Math.floor(BOARD_WIDTH / 2));
+      };
+      return {
+        setup: setup
+      }
+    })();
+    $(function() {
+      Board.setup();
+    })
+  </script>
+  <style type="text/css">
+    body {
+      font-family: "League Gothic", Helvetica;
+      padding: 20px;
+      text-transform: uppercase;
+    }
+    body, th {
+      font-size: 32px;
+    }
+    h1 {
+      font-size: 48px;
+      font-weight: normal;
+      margin: 0 40px;
+      padding: 0;
+    }
+    table {
+      margin: 0 auto 20px;
+    }
+    td, th {
+      background: #fff;
+      border: 1px solid #ddd;
+      font-size: 22px;
+      height: 100px;
+      padding: 5px;
+      text-align: center;
+      width: 90px;
+    }
+    td.wildcard {
+      background: #111;
+      color: #eee;
+      font-size: 40px;
+    }
+    #board {
+      padding: 20px 0;
+      margin: 0 auto;
+      width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <div id="board">
+    <h1>Chat Roulette Bingo</h1>
+    <table id="board_squares">
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td>
+        <td class="wildcard">PENIS</td><td></td><td></td>
+      </tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+  
+</body>
+</html>

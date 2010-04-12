@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <script type="text/javascript" src="scripts/jquery-1.4.2.js"></script>
+    <script type="text/javascript" src="scripts/jquery.query.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        var n = $.query.get("n");
+        n = n || 50;
+        for (var i = 0; i < n; i++) {
+          var iframe = $('<iframe src="bingo.html"></iframe>');
+          $(document.body).append(iframe);
+        }
+      })
+    </script>
+    <style type="text/css">
+      iframe {
+        border: none;
+        overflow: hidden;
+        page-break-after: always;
+        page-break-inside: avoid;
+        height: 800px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body></body>
+</html>
